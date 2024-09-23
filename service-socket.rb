@@ -1,26 +1,6 @@
 require 'socket'
 require 'optparse'
 
-def input_data
-  print("Input target URL or IP: ")
-  target = gets.chomp
-  print("Input target service (if you have a question about service -h): ")
-  service = gets.chomp
-  return target, service
-end
-
-def socket_analysis(target, service)
-  begin
-    remote_info = Socket.getaddrinfo(target, service)
-
-    remote_info.each do |addr|
-      puts "Family: #{addr[0]}, Type: #{addr[1]}, Protocol: #{addr[2]}, Address: #{addr[3]}"
-    end
-  rescue SocketError => e
-    puts "Error: #{e.message}"  
-  end
-end
-
 options = {}
 optparse = OptionParser.new do |opts|
   opts.banner = <<-BANNER
@@ -70,6 +50,26 @@ if options[:service]
 else
   puts "No service specified, using default ports"
   options[:service] = [80, 443, 20, 22, 25, 143, 53, 5432, 3306, 6379].map(&:to_s)
+end
+
+def input_data
+  print("Input target URL or IP: ")
+  target = gets.chomp
+  print("Input target service (if you have a question about service -h): ")
+  service = gets.chomp
+  return target, service
+end
+
+def socket_analysis(target, service)
+  begin
+    remote_info = Socket.getaddrinfo(target, service)
+
+    remote_info.each do |addr|
+      puts "Family: #{addr[0]}, Type: #{addr[1]}, Protocol: #{addr[2]}, Address: #{addr[3]}"
+    end
+  rescue SocketError => e
+    puts "Error: #{e.message}"  
+  end
 end
 
 target = options[:target]
