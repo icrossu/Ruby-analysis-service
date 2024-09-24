@@ -49,7 +49,7 @@ if options[:service]
   puts "Service: #{options[:service].join(', ')}"
 else
   puts "No service specified, using default ports"
-  options[:service] = [80, 443, 20, 22, 25, 143, 53, 5432, 3306, 6379].map(&:to_s)
+  options[:service] = [80, 443, 20, 21, 22, 25, 143, 53, 5432, 3306, 6379].map(&:to_s)
 end
 
 def input_data
