@@ -30,7 +30,7 @@ end
 With this information, we can move on to the next step.
 
 <pre><code class="has-line-data" data-line-start="33" data-line-end="44" class="language-ruby">
-def socket_analysis(target, service) # A partir do input, vamos para a próxima função, onde definimos um novo socket do tipo 'IPV4' e 'TCP'. 
+def socket_analysis(target, service) 
   begin
     remote_info = Socket.getaddrinfo(target, service) 
 
@@ -42,3 +42,7 @@ def socket_analysis(target, service) # A partir do input, vamos para a próxima 
   end
 end
 </code></pre>
+
+In the next step, we can visualize the socket_analysis function where we will get the target and the service we want to analyze.
+
+After that, we create a begin rescue block with the remote information variable, which will connect and retrieve information from the path and the service. We will start a loop with each do that will iterate over a data structure array and will fetch each respective piece of information from within the data structure. The code terminates upon the occurrence of an error.
