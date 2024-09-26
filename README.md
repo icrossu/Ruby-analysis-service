@@ -49,39 +49,39 @@ After that, we create a begin rescue block with the remote information variable,
 
 ### Argument Parsing:
 
-    Utilizes the OptionParser library to handle command-line arguments for specifying the target and services to scan.
+   Utilizes the OptionParser library to handle command-line arguments for specifying the target and services to scan.
 
 ### Target Validation:
 
-    Checks if a target is specified. If not, it prints a message and exits the program.
+   Checks if a target is specified. If not, it prints a message and exits the program.
 
 ### Service Validation:
 
-    Checks if services are provided. If not, defaults to a predefined list of common ports.
+   Checks if services are provided. If not, defaults to a predefined list of common ports.
 
 ### Input Data Function:
 
-    input_data function prompts the user for a target URL or IP and the target service. It returns the inputs for further processing.
+   input_data function prompts the user for a target URL or IP and the target service. It returns the inputs for further processing.
 
 ### Socket Analysis Function:
 
-    Begin Block: Starts a begin block for error handling during socket operations.
+   Begin Block: Starts a begin block for error handling during socket operations.
 
-    Remote Information Retrieval:
+   Remote Information Retrieval:
         Socket.getaddrinfo(target, service) retrieves address information for the specified target and service.
 
-    Iteration Over Address Information:
-        Uses each do to loop through each address returned by getaddrinfo. For each address:
-            Output Information: Prints the family, type, protocol, and address of each socket address.
+   Iteration Over Address Information:
+        Uses each do to loop through each address returned by getaddrinfo. For each address:            
+        Output Information: Prints the family, type, protocol, and address of each socket address.
 
 ### Exception Handling:
 
-    Catches SocketError to handle issues like invalid target or network errors. If an error occurs, it prints an error message.
+  Catches SocketError to handle issues like invalid target or network errors. If an error occurs, it prints an error message.
 
 ### Main Execution Loop:
 
-    Loops over the provided services, calling the socket_analysis function for each service, which handles the connection attempts and outputs results.
+  Loops over the provided services, calling the socket_analysis function for each service, which handles the connection attempts and outputs results.
 
 ### Completion Message:
 
-    The script completes execution, having attempted to analyze each specified service against the target.
+  The script completes execution, having attempted to analyze each specified service against the target.
